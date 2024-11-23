@@ -32,10 +32,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ReduxProvider>
-          <div className="min-h-screen grid">
-            <MobileWrapper />
-            <main className="md:ml-[var(--sidebar-width)]">{children}</main>
-          </div>
+          <MobileWrapper />
+          <main className="md:ml-[var(--sidebar-width)] pt-4">
+            <div>{children}</div>
+          </main>
         </ReduxProvider>
       </body>
     </html>

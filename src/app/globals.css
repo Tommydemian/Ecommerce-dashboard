@@ -40,6 +40,10 @@ body {
   .hamb-menu__transition {
     transition: opacity 750ms ease-in 0.25ms;
   }
+
+  .mobile-w-full {
+    max-width: calc(100% - 1.5rem);
+  }
 }
 
 @layer utilities {

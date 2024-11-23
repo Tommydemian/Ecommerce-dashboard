@@ -12,12 +12,10 @@ export const MobileWrapper = () => {
   const openSidebar = () => setIsSidebarOpen(true);
 
   return (
-    <>
+    <div>
       <Overlay isActive={isSidebarOpen} />
       <Sidebar isSidebarOpen={isSidebarOpen} closeSideBar={closeSidebar} />
-      <div>
-        <Header openSideBar={openSidebar} isSideBarOpen={isSidebarOpen} />
-      </div>
-    </>
+      <Header openSideBar={openSidebar} isSideBarOpen={isSidebarOpen} />
+    </div>
   );
 };

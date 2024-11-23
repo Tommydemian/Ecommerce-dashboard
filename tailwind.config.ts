@@ -22,6 +22,7 @@ export default {
           "900": "#742a1a",
           "950": "#3e130c",
         },
+        skeleton: "#E2E8F0",
       },
       transitionProperty: {
         overlay: "opacity",
