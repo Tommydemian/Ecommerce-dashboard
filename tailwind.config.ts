@@ -23,6 +23,8 @@ export default {
           "950": "#3e130c",
         },
         skeleton: "#E2E8F0",
+        "skeleton-bg": "#F8FAFC",
+        "skeleton-content": "#CBD5E1",
       },
       transitionProperty: {
         overlay: "opacity",

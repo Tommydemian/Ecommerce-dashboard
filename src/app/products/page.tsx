@@ -1,22 +1,29 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { MainContainer } from "../components/ui/MainContainer";
-import { ProductList } from "../components/products/ProductList";
+import { ProductsClientWrapper } from "../components/products/ProductsClientWrapper";
+import { ProductCardSkeletonList } from "../components/products/ProductCardSkeletonList";
 
-import { ClientSearchWrapper } from "../components/products/ClientSearchWrapper";
-import { SearchSlot } from "../components/ui/SearchSlot";
+async function getData() {
+  const products = await fetch("https://dummyjson.com/products?limit=20", {
+    next: { revalidate: 3600 },
+    headers: { "Content-Type": "application/json" },
+  });
 
-const products = await fetch("https://dummyjson.com/products?limit=20");
-const data = await products.json();
+  if (!products.ok) throw new Error("Failed to fetch");
+  return products.json();
+}
+
+async function AsyncProducts() {
+  const data = await getData();
+  return <ProductsClientWrapper products={data.products} />;
+}
 
 const ProductsPage = () => {
   return (
     <MainContainer>
-      <div id="layout">
-        <SearchSlot>
-          <ClientSearchWrapper />
-        </SearchSlot>
-      </div>
-      <ProductList initialData={data.products} />
+      <Suspense fallback={<ProductCardSkeletonList />}>
+        <AsyncProducts />
+      </Suspense>
     </MainContainer>
   );
 };
